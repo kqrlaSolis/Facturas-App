@@ -1,11 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Layout } from "./components/layout";
+import { AppRouter } from "./routes/AppRouter";
 
 function App() {
   return (
-    <div className="App">
-      <h1> Facturas App </h1>
-    </div>
+    <Layout>
+      <AppRouter/>
+    </Layout>
   );
 }
 
