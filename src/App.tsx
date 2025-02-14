@@ -2,11 +2,13 @@ import React from "react";
 import "./App.css";
 import { Layout } from "./components/layout";
 import { AppRouter } from "./routes/AppRouter";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
     <Layout>
-      <AppRouter/>
+      <Navbar />
+      <AppRouter />
     </Layout>
   );
 }
