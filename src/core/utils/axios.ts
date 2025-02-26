@@ -24,6 +24,33 @@ export const GET = async (url: string) => {
     }
 }
 
+export const PUT = async (url: string, data: any) => {
+    try {
+        const response = await axiosInstance.put(url, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const DELETE = async (url: string) => {
+    try {
+        const response = await axiosInstance.delete(url);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const PATCH = async (url: string, data: any) => {
+    try {
+        const response = await axiosInstance.patch(url, data);
+        return response.data;
+    } catch ( error ) {
+        throw error;
+    }
+};
+
 
 
 
