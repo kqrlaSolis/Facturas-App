@@ -1,17 +1,27 @@
 import React, { useState } from "react";
-import { useSelector} from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../core/store/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector((state: any) => state.user);
 
-  const user = useSelector((state:any) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evita que el evento onBlur se dispare
+    console.log("Logout");
+    dispatch(clearUser());
+    navigate("/login");
+  };
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <h1 className="text-3xl font-bold text-gray-700">Facturas App </h1>
+          <h1 className="text-3xl font-bold text-gray-700">Facturas App</h1>
 
           <div className="relative" tabIndex={0} onBlur={() => setIsOpen(false)}>
             <button
@@ -56,7 +66,10 @@ const Navbar: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button
+                      onClick={(e) => handleLogout(e)} // Pasa el evento para detener la propagación
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
                       Cerrar sesión
                     </button>
                   </li>

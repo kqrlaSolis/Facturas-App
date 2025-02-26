@@ -1,10 +1,11 @@
 import React from 'react';
+import { InvoicesTable } from './components/InvoicesTable';
 
 const Invoices: React.FC = () => {
     return (
-        <div>
-            <p>Welcome to the Invoices page.</p>
-        </div>
+        <>
+        <InvoicesTable></InvoicesTable>
+        </>
     );
 };
 

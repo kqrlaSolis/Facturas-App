@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../core/store/authSlice";
 
-
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,9 +23,16 @@ const Login: React.FC = () => {
     console.log(response);
     if (response) {
       const token = response.token;
-      const decodedToken = decodeToken(token);
+      const decodedToken: any = decodeToken(token);
       console.log(decodedToken);
-      dispatch(setUser(decodedToken));
+      dispatch(
+        setUser({
+          id: decodedToken.id,
+          name: decodedToken.name,
+          email: decodedToken.email,
+        })
+      );
+      console.log("User logged in");
       navigate("/dashboard");
     }
   };

@@ -1,11 +1,12 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard/Dashboard';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const PrivateRoutes = () => {
-    return (
-        <Routes>
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='*' element={<Navigate to='/' replace />} />
-        </Routes>
+
+
+  const user = useSelector((state:any) => state.user);
+
+
+    return (user.id > 0 ? <Outlet /> : <Navigate to="/login"/> 
     );
 };
