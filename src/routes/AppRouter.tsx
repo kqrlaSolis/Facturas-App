@@ -6,6 +6,7 @@ import Invoices from "../pages/Invoices/Invoices";
 import Users from "../pages/Users/Users";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { useSelector } from "react-redux";
+import { InvoiceDetail } from "../pages/Invoices/components/InvoiceDetail";
 
 export const AppRouter = () => {
   const user = useSelector((state: any) => state.user);
@@ -21,6 +22,7 @@ export const AppRouter = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/invoices" element={<Invoices />} />
+          <Route path="/invoicedetails" element={<InvoiceDetail />} />
           <Route path="/users" element={<Users />} />
           <Route path="*" element={<Navigate to={"/dashboard"} replace />} />
         </Route>

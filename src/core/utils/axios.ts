@@ -18,7 +18,7 @@ export const POST = async (url: string, data: any) => {
 export const GET = async (url: string) => {
     try {
         const response = await axiosInstance.get(url);
-        return response.data;
+        return response;
     } catch (error) {
         throw error;
     }

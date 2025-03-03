@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { POST } from "../../core/utils/axios";
-import { decodeToken } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../core/store/authSlice";
+import { loginUser } from "../../core/services/authService";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -14,24 +13,10 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     console.log("Login");
-    const response = await POST("/login", {
-      email: email,
-      password: password,
-    }).catch((error) => {
-      console.error("Error:", error.response.data);
-    });
-    console.log(response);
-    if (response) {
-      const token = response.token;
-      const decodedToken: any = decodeToken(token);
-      console.log(decodedToken);
-      dispatch(
-        setUser({
-          id: decodedToken.id,
-          name: decodedToken.name,
-          email: decodedToken.email,
-        })
-      );
+    const userData = await loginUser(email, password);
+
+    if (userData) {
+      dispatch(setUser(userData));
       console.log("User logged in");
       navigate("/dashboard");
     }

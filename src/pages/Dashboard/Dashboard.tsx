@@ -1,14 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { GET } from "../../core/axios/axios";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
-  const getUSers = async () => {
-    const response = await GET("/users");
-    console.log(response);
-  }
 
   return (
     <div className="flex justify-center max-w-screen-xl mx-auto p-4">
@@ -30,7 +25,6 @@ const Dashboard: React.FC = () => {
             Clientes
           </h5>
         </button>
-        <button onClick={getUSers}>COLA </button>
       </div>
     </div>
   );
