@@ -1,12 +1,15 @@
-import React from 'react';
+import { InvoicesTable } from "./components/InvoicesTable";
 
 const Invoices: React.FC = () => {
-    return (
-        <div>
-            <h1>Invoices</h1>
-            <p>Welcome to the Invoices page.</p>
-        </div>
-    );
+  const handleViewDetails = (invoice: any) => {
+    console.log(invoice);
+  };
+
+  return (
+    <>
+      <InvoicesTable onEdit={handleViewDetails}></InvoicesTable>
+    </>
+  );
 };
 
 export default Invoices;

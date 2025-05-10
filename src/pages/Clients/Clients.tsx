@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
 const Clients: React.FC = () => {
-    return (
-        <div>
-            <h1>Clients</h1>
-            <p>Welcome to the Clients page.</p>
-        </div>
-    );
+
+
+
+  return (
+    <div className="max-w-screen-xl mx-auto p-4">
+      <h1> Clients Page </h1>
+    </div>
+  );
 };
 
 export default Clients;
